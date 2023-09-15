@@ -6,7 +6,9 @@
 		"dev": "vite",
 		"lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx,.json --fix --cache",
 		"format": "prettier --write \"./**/*.{html,vue,js,ts,json,md}\" ",
-    "lint:style": "stylelint src/**/*.{css,scss,vue} --cache --fix"
+		"lint:style": "stylelint src/**/*.{css,scss,vue} --cache --fix",
+		"prepare": "husky install",
+    "commitlint": "commitlint --config commitlint.config.cjs -e -V"
 	},
 	"keywords": [
 		"fish-plugin-utils"
@@ -17,12 +19,15 @@
 		"vite": "^4.4.9"
 	},
 	"devDependencies": {
+		"@commitlint/cli": "^17.7.1",
+		"@commitlint/config-conventional": "^17.7.0",
 		"@typescript-eslint/eslint-plugin": "^6.7.0",
 		"@typescript-eslint/parser": "^6.7.0",
 		"eslint": "^8.49.0",
 		"eslint-config-prettier": "^9.0.0",
 		"eslint-plugin-prettier": "^5.0.0",
 		"eslint-plugin-vue": "^9.17.0",
+		"husky": "^8.0.0",
 		"postcss": "^8.4.29",
 		"postcss-html": "^1.5.0",
 		"postcss-scss": "^4.0.8",
@@ -40,9 +45,10 @@
 		"stylelint-scss": "^5.2.1",
 		"typescript": "^5.0.2"
 	},
-  "pnpm": {
-    "peerDependencies": {
-      "webpack": "@^5.0.0"
-    }
+  "lint-staged": {
+    "*.{vue,js,ts,jsx,tsx,md,json}": [
+      "eslint --cache --fix",
+      "git add"
+    ]
   }
 }
