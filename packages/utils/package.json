@@ -1,0 +1,6 @@
+{
+	"name": "@fish-design/plugin-utils",
+	"private": true,
+	"license": "MIT",
+	"main": "index.ts"
+}
